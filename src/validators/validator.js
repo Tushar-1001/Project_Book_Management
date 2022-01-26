@@ -1,0 +1,38 @@
+const mongoose = require('mongoose')
+
+//Validation Functions..............................
+
+const isValid = function(value) {
+    if (typeof value === 'undefined' || value === null) return false //it checks whether the value is null or undefined.
+    if (typeof value === 'string' && value.trim().length === 0) return false //it checks whether the string contain only space or not 
+    return true;
+};
+
+const isValidObjectId = function(objectId) {
+    return mongoose.Types.ObjectId.isValid(objectId)
+}
+
+const isValidRequestBody = function(requestBody) {
+    return Object.keys(requestBody).length > 0; // it checks, is there any key is available or not in request body
+};
+
+const isValidTitle = function(title) {
+    return ['Mr', 'Mrs', 'Miss'].indexOf(title) !== -1
+}
+const validRating = function isInteger(value) {
+    return value % 1 == 0;
+}
+
+const validString = function(value) {
+    if (typeof value === 'string' && value.trim().length === 0) return false //it checks whether the string contain only space or not 
+    return true;
+}
+
+module.exports = {
+    isValid,
+    isValidObjectId,
+    isValidRequestBody,
+    isValidTitle,
+    validRating,
+    validString
+}
