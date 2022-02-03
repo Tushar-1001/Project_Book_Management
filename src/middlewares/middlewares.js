@@ -19,13 +19,13 @@ const userAuth = function (req, res, next) {
         if (Date.now() > (decoded.exp) * 1000) {
             return res.status(403).send({ status: false, message: "Session expired! Please login again." })
         }
-//         const verify = jwt.verify(token, 'SecretKey')
-//         console.log(verify, 'verify');
+        const verify = jwt.verify(token, 'SecretKey')
+        console.log(verify, 'verify');
 
-//         if (!verify) {
-//             res.status(403).send({ status: false, message: `Invalid authentication token in request` })
-//             return;
-//         }
+        if (!verify) {
+            res.status(403).send({ status: false, message: `Invalid authentication token in request` })
+            return;
+        }
         req.userId = decoded.userId;
         next()
     }
