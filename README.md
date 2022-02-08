@@ -6,6 +6,7 @@ This time each group should have a single git branch. Coordinate amongst yoursel
 Follow the naming conventions exactly as instructed.
 ## Models
 ## User Model
+```yaml
 { 
   title: {string, mandatory, enum[Mr, Mrs, Miss]},
   name: {string, mandatory},
@@ -20,7 +21,9 @@ Follow the naming conventions exactly as instructed.
   createdAt: {timestamp},
   updatedAt: {timestamp}
 }
+```
 ## Books Model
+```yaml
 { 
   title: {string, mandatory, unique},
   excerpt: {string, mandatory}, 
@@ -35,7 +38,9 @@ Follow the naming conventions exactly as instructed.
   createdAt: {timestamp},
   updatedAt: {timestamp},
 }
+```
 ## Review Model (Books review)
+```yaml
 {
   bookId: {ObjectId, mandatory, refs to book model},
   reviewedBy: {string, mandatory, default 'Guest', value: reviewer's name},
@@ -44,6 +49,7 @@ Follow the naming conventions exactly as instructed.
   review: {string, optional}
   isDeleted: {boolean, default: false},
 }
+```
 ## User APIs
 ## POST /register
 Create a user - atleast 5 users
@@ -117,19 +123,24 @@ Each member of each team should have their tests in running state
 Refer below sample A Postman collection and request sample
 ## Response
 Successful Response structure
+```yaml
 {
   status: true,
   message: 'Success',
   data: {
   }
 }
+```
 Error Response structure
+```yaml
 {
   status: false,
   message: ""
 }
+```
 Collections
 users
+```yaml
 {
   _id: ObjectId("88abc190ef0288abc190ef02"),
   title: "Mr",
@@ -145,7 +156,9 @@ users
   "createdAt": "2021-09-17T04:25:07.803Z",
   "updatedAt": "2021-09-17T04:25:07.803Z",
 }
+```
 books
+```yaml
 {
   "_id": ObjectId("88abc190ef0288abc190ef55"),
   "title": "How to win friends and influence people",
@@ -170,8 +183,10 @@ reviews
   rating: 4,
   review: "An exciting nerving thriller. A gripping tale. A must read book."
 }
+```
 Response examples
 Get books response
+```yaml
 {
   status: true,
   message: 'Books list',
@@ -196,7 +211,9 @@ Get books response
     }
   ]
 }
+```
 Book details response
+```yaml
 {
   status: true,
   message: 'Books list',
@@ -248,8 +265,9 @@ Book details response
       }, 
     ]
   }
-}
+```
 Book details response no reviews
+```yaml
 {
   status: true,
   message: 'Books list',
@@ -269,3 +287,4 @@ Book details response no reviews
     "reviewsData": []
   }
 }
+```
