@@ -1,4 +1,3 @@
-# Radiumplus
 # Project - Books Management
 
 **Key points**
